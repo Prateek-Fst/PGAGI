@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import DraggableWidget from '@/components/ui/DraggableWidget';
 import NewsWidget from '@/components/widgets/NewsWidget';
 import FinanceWidget from '@/components/widgets/FinanceWidget';
-import GitHubWidget from '@/components/widgets/GitHubWidget';
+import GitHubWidget from  '@/components/widgets/GithubWidget';
 import { useSearch } from '@/lib/SearchContext';
 import { useTranslation } from 'react-i18next';
 

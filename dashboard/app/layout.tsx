@@ -9,7 +9,7 @@ import Sidebar from '@/components/layout/Sidebar';
 import Header from '@/components/layout/Header';
 import { SearchProvider } from '@/lib/SearchContext';
 import i18n from '@/lib/i18n';
-import '/Users/mac/Desktop/PgAGI/my-dashboard/styles/global.css';
+import '../styles/global.css';
 import { useEffect } from 'react';
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
