@@ -23,18 +23,25 @@ export default function FinancePage() {
     symbol,
     ...(timeRange === '1day' && { interval: '5min' }),
   });
-
   const { data: searchData, isFetching: searchFetching } = useSearchSymbolsQuery(
     { keywords: debouncedInput },
     { skip: debouncedInput.length < 2 }
-  );
+  ) as any;
+  
 
   const getChartData = () => {
-    const timeSeriesKey =
-      timeRange === '1day' ? 'Time Series (5min)' : 'Time Series (Daily)';
-    const timeSeries = stockData?.[timeSeriesKey];
+    const timeSeriesMapping: { [key: string]: string } = {
+      '1day': 'Time Series (5min)', // Change to match the correct API response
+      '1week': 'Time Series (Daily)',
+      '1month': 'Time Series (Daily)',
+      '1year': 'Time Series (Daily)',
+    };
+  
+    const timeSeriesKey = timeSeriesMapping[timeRange] || 'Time Series (Daily)';
+  
+    const timeSeries = (stockData as any)?.[timeSeriesKey];
     if (!timeSeries) return [];
-
+  
     const entries = Object.entries(timeSeries);
     const sliceSize = {
       '1day': 24,
@@ -42,7 +49,7 @@ export default function FinancePage() {
       '1month': 30,
       '1year': 252, 
     }[timeRange];
-
+  
     return entries.slice(0, sliceSize).map(([date, values]) => ({
       name: date,
       open: parseFloat((values as any)['1. open']),
@@ -52,6 +59,7 @@ export default function FinancePage() {
       volume: parseInt((values as any)['5. volume'], 10),
     }));
   };
+  
 
   const chartData = getChartData();
   const latest = chartData[0];
@@ -84,7 +92,7 @@ export default function FinancePage() {
             {searchFetching ? (
               <li className="p-2 text-gray-500">Loading...</li>
             ) : (
-              searchData.bestMatches.map((match) => (
+              searchData.bestMatches.map((match:any) => (
                 <li
                   key={match['1. symbol']}
                   onClick={() => handleSelectSymbol(match['1. symbol'])}

@@ -55,7 +55,6 @@ export default function GitHubPage() {
             <p className="text-gray-900 dark:text-white">Stars: {repoData?.stargazers_count.toLocaleString()}</p>
             <p className="text-gray-900 dark:text-white">Forks: {repoData?.forks_count.toLocaleString()}</p>
             <p className="text-gray-900 dark:text-white">Issues: {repoData?.open_issues_count.toLocaleString()}</p>
-            <p className="text-gray-900 dark:text-white col-span-full">Description: {repoData?.description || 'No description'}</p>
           </div>
           <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Commit Activity (Last 52 Weeks)</h2>

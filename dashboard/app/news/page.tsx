@@ -2,6 +2,16 @@
 import { useState } from 'react';
 import { useGetTopHeadlinesQuery } from '@/store/api/newsApi';
 import Card from '@/components/ui/Card';
+type Article = {
+  title: string;
+  description?: string;
+  content?: string;
+  author?: string;
+  source: { name: string };
+  url: string;
+  urlToImage?: string;
+  publishedAt: string;
+};
 
 export default function NewsPage() {
   const [page, setPage] = useState(1);
@@ -18,7 +28,7 @@ export default function NewsPage() {
   });
 
   const handleCategoryChange = (cat: string) => {
-    setCategory(cat === category ? undefined : cat);
+    setCategory(cat === category ? '' : cat);
     setPage(1); 
   };
 
@@ -93,7 +103,7 @@ export default function NewsPage() {
         <span className="py-2 text-gray-900 dark:text-white">Page {page}</span>
         <button
           onClick={() => setPage(page + 1)}
-          disabled={data?.totalResults <= page * 5}
+          disabled={data?.totalResults ? data.totalResults <= page * 5 : true}
           className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded disabled:opacity-50"
         >
           Next
