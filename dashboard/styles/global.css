@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+
+.trend-arrow {
+  font-size: 2rem;
+  animation: trend 1s infinite;
+}
+
+.trend-arrow.up {
+  color: #10B981;
+}
+
+.trend-arrow.down {
+  color: #EF4444;
+}
+
+@keyframes trend {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+
+.trend-arrow {
+  font-size: 2rem;
+  animation: trend 1s infinite;
+}
+
+.trend-arrow.up {
+  color: #10B981; 
+}
+
+.trend-arrow.down {
+  color: #EF4444; 
+}
+
+
+.dark .trend-arrow.up {
+  color: #34D399;
+}
+
+.dark .trend-arrow.down {
+  color: #F87171; 
+}
+
+@keyframes trend {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
