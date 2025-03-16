@@ -7,12 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-   "test": "jest --no-deprecation",
-  "test:watch": "jest --watch --no-deprecation",
-  "test:coverage": "jest --coverage --no-deprecation"
+    "test": "jest --no-deprecation",
+    "test:watch": "jest --watch --no-deprecation",
+    "test:coverage": "jest --coverage --no-deprecation"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.1",
+    "autoprefixer": "^10.4.21",
     "i18next": "^24.2.3",
     "i18next-browser-languagedetector": "^8.0.4",
     "lottie-react": "^2.4.1",
